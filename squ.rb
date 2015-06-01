@@ -38,19 +38,10 @@ bot.search('#squirrel') do |tweet|
     file << entry
   end
 
+   uri = URI('your_carto_db_api_key')
 
-  # https://{account}.cartodb.com/api/v2/sql?q=INSERT INTO test_table (column_name, column_name_2, the_geom) VALUES ('this is a string', 11, ST_SetSRID(ST_Point(-110, 43),4326))&api_key={Your API key}
-  #
-  # uri = URI.parse("https://wrfcarl.cartodb.com/api/v2/sql?q=SELECT count(*) FROM squ &api_key=4de33fff24bf12ab92ec7ca9dbf4df23342c6966")
-  # puts uri
-
-   uri = URI('https://wrfcarl.cartodb.com/api/v2/sql?q=SELECT*FROM+squ&api_key=4de33fff24bf12ab92ec7ca9dbf4df23342c6966')
-  #
    response = Net::HTTP.get(uri)
    puts response
-
-  # post_to_carto =  'https://wrfcarl.cartodb.com/api/v2/sql?q=INSERT+INTO+squ(id,lat,long,user,text,tweet_created_at)+VALUES+(#{tweet.id}, #{coordinates[0]},#{coordinates[1]},#{tweet.user.screen_name},#{tweet.text.gsub(/\n/,'')},#{tweet.created_at})&api_key=4de33fff24bf12ab92ec7ca9dbf4df23342c6966'
-  # Net::HTTP.get(post_to_carto)
 
   end
 
